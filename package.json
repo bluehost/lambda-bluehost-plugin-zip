@@ -5,8 +5,24 @@
   "private": true,
   "scripts": {
     "deploy": "node deploy.js",
+    "lint": "npx yamllint **/*.yml --ignore=node_modules/**",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Micah Wood <micah@wpscholar.com>",
-  "license": "GPL-2.0-or-later"
+  "license": "GPL-2.0-or-later",
+  "devDependencies": {
+    "husky": "^4.2.5",
+    "lint-staged": "^10.1.7",
+    "yaml-lint": "^1.2.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.yml": [
+      "npm run lint"
+    ]
+  }
 }
