@@ -20,9 +20,9 @@ jobs:
         run: echo ::set-output name=functionName::${REPO/bluehost\/lambda-/}
 
       - name: Set Node.js 12.x
-          uses: actions/setup-node@v1
-          with:
-            node-version: 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
 
       - name: Node version
         run: node --version
