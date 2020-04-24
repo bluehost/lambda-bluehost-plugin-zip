@@ -1,0 +1,12 @@
+{
+  "name": "lambda-bluehost-plugin-zip",
+  "description": "An AWS Lambda function that returns the latest .zip file release for a specific Bluehost WordPress plugin.",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "deploy": "node deploy.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Micah Wood <micah@wpscholar.com>",
+  "license": "GPL-2.0-or-later"
+}
