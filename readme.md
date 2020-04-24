@@ -2,18 +2,18 @@
 
 An AWS Lambda function designed to return a `.zip` file for registered Bluehost plugins.
 
-## Setup
-
-- Run `npm install`
-
 ## Usage
 
-Visit `bluehost-wp-release.com/v1/:plugin` where `:plugin` is a registered plugin name.
+Visit `https://bluehost-wp-release.com/v1/:plugin` where `:plugin` is a registered plugin name.
 
 ## Registered Plugin Names
 
 - [bluehost-wordpress-plugin](https://github.com/bluehost/bluehost-wordpress-plugin)
 - [mojo-marketplace-wp-plugin](https://github.com/mojoness/mojo-marketplace-wp-plugin)
+
+## Install
+
+- Run `npm install`
 
 ## Deployment
 
