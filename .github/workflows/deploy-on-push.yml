@@ -56,4 +56,3 @@ jobs:
           aws_region: ${{ secrets.AWS_REGION }}
           function_name: ${{ steps.lambda.outputs.functionName }}
           zip_file: "${{ steps.lambda.outputs.functionName }}.zip"
-          dry_run: true
