@@ -1,5 +1,7 @@
 # AWS Lambda - Bluehost Plugin Zip
 
+![Deploy to Lambda](https://github.com/bluehost/lambda-bluehost-plugin-zip/workflows/Deploy%20to%20Lambda/badge.svg)
+
 An AWS Lambda function designed to return a `.zip` file for registered Bluehost plugins.
 
 ## Usage
