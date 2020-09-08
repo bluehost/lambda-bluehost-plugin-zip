@@ -50,7 +50,7 @@ jobs:
         run: npm install --only=prod
 
       - name: Create Zip
-        run: zip ${{ steps.lambda.outputs.functionName }}.zip index.js
+        run: zip -r ${{ steps.lambda.outputs.functionName }}.zip . -x "*.git*" "deploy.js" "local.js" "package*" "readme.md"
 
       - name: Deploy
         uses: appleboy/lambda-action@master
