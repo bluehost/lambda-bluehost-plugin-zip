@@ -1,4 +1,6 @@
 const {Lambda} = require('aws-sdk');
+const fetch = require('node-fetch');
+const {getResponse} = require('./functions');
 
 exports.handler = async (event) => {
 
@@ -26,38 +28,26 @@ exports.handler = async (event) => {
 		};
 	}
 
-	return await new Promise((resolve, reject) => {
-		const params = {
-			FunctionName: 'bluehost-github-release-api',
-			Payload: JSON.stringify({queryStringParameters: validPlugins[plugin]}, null, 2)
-		};
+	const response = await fetch(
+		`https://bluehost-wp-release.com/v1/?vendorName=${ validPlugins[plugin]['vendorName'] }&packageName=${ validPlugins[plugin]['packageName'] }&pluginBasename=${ validPlugins[plugin]['pluginBasename'] }`,
+		{method: 'GET'}
+	);
 
-		lambda.invoke(params, (err, {Payload}) => {
-			if (err) {
-				reject({
-					statusCode: 500,
-					body: JSON.stringify(err)
-				});
-			} else {
-				const {body} = JSON.parse(Payload);
-				const response = JSON.parse(body);
-				const url = response.package || '';
-				if (!url) {
-					reject({
-						statusCode: 500,
-						body: 'Unknown error.'
-					});
-				} else {
-					resolve({
-						statusCode: 302,
-						headers: {
-							'Location': url
-						},
-						body: '',
-					});
-				}
-			}
+	// Proxy error response
+	if (response.status !== 200) {
+		return getResponse({
+			statusCode: response.status,
+			body: await response.json(),
 		});
+	}
+
+	const {package: Location} = await response.json();
+
+	return getResponse({
+		statusCode: 302,
+		headers: {
+			Location
+		},
 	});
 
 };

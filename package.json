@@ -10,7 +10,11 @@
   },
   "author": "Micah Wood <micah@wpscholar.com>",
   "license": "GPL-2.0-or-later",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
   "devDependencies": {
+    "aws-sdk": "^2.747.0",
     "husky": "^4.2.5",
     "lint-staged": "^10.1.7",
     "yaml-lint": "^1.2.4"
