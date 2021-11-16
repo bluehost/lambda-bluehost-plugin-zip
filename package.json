@@ -22,7 +22,7 @@
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
-    "aws-sdk": "^2.747.0",
+    "aws-sdk": "^2.814.0",
     "husky": "^4.3.0",
     "lint-staged": "^10.3.0",
     "yaml-lint": "^1.2.4"
